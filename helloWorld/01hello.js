@@ -1,4 +1,4 @@
-const {add, sub} = require("./math") 
+const {add, sub} = require("./01.11math") 
 
 console.log("Hii there! I am JS");
 

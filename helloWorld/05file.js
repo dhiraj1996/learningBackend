@@ -1,7 +1,9 @@
 const fs = require("fs");
 
+// //To run this write node file.js and uncomment each code with topic------
+
 // //For creating file
-// //sync
+// //sync is used to make code syncronous
 // fs.writeFileSync("./dhiraj.txt", "hello Dhiraj");
 
 // //async way to create file and it also take a callback of error if any error occurs it will come to err CB.
