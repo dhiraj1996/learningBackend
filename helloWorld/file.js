@@ -24,7 +24,28 @@ const fs = require("fs");
 // })
 
 
-//To append data in file --------------------
-//or for date 
-fs.appendFileSync('./dhiraj.txt', `${new Date().getDay()} \n`); 
-//
+// //To add append data in existing file --------------------
+// //or for date 
+// fs.appendFileSync('./dhiraj.txt', `${new Date().getDay()} \n`); 
+// //
+
+
+// //To make a copy of the file cpSync....---------------
+// fs.cpSync("./dhiraj.txt", "./dhirajcopy.txt");
+
+
+// // To delete file.. unlinck or unlinkSync is used---------
+// fs.unlinkSync("./dhirajcopy.txt")
+
+
+// //To see the detail or stats of the file-----------
+// console.log(fs.statSync("./dhiraj.txt"));
+
+
+// //to see the file is present or not .isFile is used------
+// console.log(fs.statSync("./dhiraj.txt").isFile());
+
+// //To make new folder we use mkdir
+// fs.mkdirSync("new-docs");
+
+//So we can't all this operation in JS due to security purpose this is only we can do in node..
