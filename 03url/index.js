@@ -1,20 +1,30 @@
 
 const http = require("http");
 const fs = require("fs");
-const { strict } = require("assert");
+const url = require("url");
 
-// const date = new Date();
-//date.toISOString().slice(0, 10) to generate date in 2024-07-23
-//date.toLocaleDateString() to generate how it is in system.
 
 const createServer = http.createServer((req, res) => {
-    const log = `${new Date().toLocaleDateString()}: ${req.url} New req received\n`
+    if(req.url === "/favicon.ico") return res.end(); //To removing extra in log.txt
+    const myUrl = url.parse(req.url, true);
+    console.log(myUrl);
+    const log = `New req received ${new Date().toLocaleDateString()}: ${req.url} \n`
 
     fs.appendFile("./log.txt", log, (err, data)=> {
-        switch(req.url){
+        switch(myUrl.pathname){
             case '/' : res.end("you are in homePage");
             break;
-            case '/about' : res.end("This is about me");
+            case '/about' : 
+            const username = myUrl.query.username;
+            if(username){
+                res.end(`Hello ${username}, Welcome to the website`);
+            }else{
+                res.end(`Hello, Welcome to the website`);
+            }
+            break;
+            case '/search':
+            const searchQuery = myUrl.query.search_query;
+            res.end(`You are searching for ${searchQuery}`)
             break;
             default : res.end("404Error");
         }
@@ -23,3 +33,4 @@ const createServer = http.createServer((req, res) => {
 })
 
 createServer.listen(8080, ()=> console.log("server started"))
+
