@@ -1,0 +1,5 @@
+New req received 6/8/2024: GET : / 
+New req received 6/8/2024: GET : /signup 
+New req received 6/8/2024: GET : /signup 
+New req received 6/8/2024: GET : /signup 
+New req received 6/8/2024: GET : /signup 
