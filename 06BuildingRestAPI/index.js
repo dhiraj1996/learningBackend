@@ -31,7 +31,8 @@ app.route("/api/users/:id").get((req,res) => {
 })
 
 app.post("/api/users" , (req, res) => {
-    res.send(console.log("Hello"))
+    // res.send(console.log("Hello"))
+    return res.json({status: "Pending"});
 })
 
 // app.get("/api/users/:id", (req,res) => {
