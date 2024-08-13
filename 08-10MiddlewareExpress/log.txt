@@ -1,0 +1,14 @@
+ 
+ 1723536669299 : GET : /api/users 
+ 1723536700629 : GET : /api/users/100 
+ 1723536710768 : GET : /api/users/1001 
+ 1723536850986 : POST : /api/users 
+ 1723546503884 : POST : /api/users 
+ 1723546612087 : GET : /api/users 
+ 1723546735979 : GET : /api/users 
+ 1723561013954 : GET : /api/users 
+ 1723561101898 : POST : /api/users 
+ 1723561997060 : POST : /api/users 
+ 1723562975594 : POST : /api/users 
+ 1723563020311 : GET : /api/users/2000 
+ 1723563094037 : GET : /api/users/2000
