@@ -11,4 +11,8 @@
  1723561997060 : POST : /api/users 
  1723562975594 : POST : /api/users 
  1723563020311 : GET : /api/users/2000 
- 1723563094037 : GET : /api/users/2000
+ 1723563094037 : GET : /api/users/2000 
+ 1723654600215 : GET : /api/users/3 
+ 1723654600621 : GET : /api/users 
+ 1723655730579 : POST : /api/users 
+ 1723656887555 : POST : /api/users

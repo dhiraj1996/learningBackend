@@ -1,10 +1,44 @@
 const express = require("express");
 const fs = require("fs");
-const users = require('./MOCK_DATA.json');
-
-const PORT = 8000;
+const mongoose = require("mongoose")
+// const users = require('./MOCK_DATA.json');
+const { type } = require("os");
 
 const app = express();
+const PORT = 8000;
+
+//Mongodb Connection
+mongoose.connect("mongodb://127.0.0.1:27017/youtube-app-1")
+.then(() => console.log("MONGO CONNECTED"))
+.catch(err => console.log("Mongo Error : ", err))
+
+
+
+//Schema
+const userSchema = new mongoose.Schema({
+    firstName : {
+        type: String,
+        required: true,
+    },
+    lastName : {
+        type: String,
+    },
+    email : {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    jobTitle : {
+        type: String,
+    },
+    gender: {
+        type: String,
+    }
+},{timestamps : true} //This is used to add time in user
+);
+
+//Model
+const User = mongoose.model("user", userSchema);
 
 //MIDDLEWARE - PLUGINS
 app.use(express.urlencoded({ extended: false }))
@@ -46,17 +80,23 @@ app.route("/api/users/:id").get((req, res) => {
     return res.json({ status: "Pending" });
 })
 
-app.post("/api/users", (req, res) => {
+app.post("/api/users",async (req, res) => {
     const body = req.body;
     //If any of this data will not find send status code of 400.
     if (!body || !body.first_name || !body.last_name || !body.email || !body.email || !body.gender || !body.job_title){
         return res.status(400).json({status : "All field are required"})
     }
-    users.push({ id: users.length + 1, ...body })
-    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
-        //changing status code for post as we need 201 for post
-        return res.status(201).json({ status: "Success", id: users.length });
+    const result = await User.create({
+        firstName : body.first_name,
+        lastName : body.last_name,
+        email : body.email,
+        gender: body.gender,
+        jobTitle: body.job_title,
     })
+
+    console.log("Result", result);
+
+    return res.status(201).json({msg : "Success"})
 })
 
 
