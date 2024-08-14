@@ -15,4 +15,15 @@
  1723654600215 : GET : /api/users/3 
  1723654600621 : GET : /api/users 
  1723655730579 : POST : /api/users 
- 1723656887555 : POST : /api/users
+ 1723656887555 : POST : /api/users 
+ 1723661991244 : GET : /users 
+ 1723662091159 : GET : /users 
+ 1723662091302 : GET : /favicon.ico 
+ 1723662359734 : POST : /api/users 
+ 1723662380696 : GET : /api/users 
+ 1723662788361 : GET : /api/users/66bd0017a9c78c76e929bd73 
+ 1723662853998 : GET : /api/users/66bd0017a9c78c76e929bd73 
+ 1723662905161 : GET : /api/users/66bd0017a9c78c76e929bd73 
+ 1723662927916 : GET : /api/users/66bd0017a9c78c76e929bd73 
+ 1723663172877 : GET : /favicon.ico 
+ 1723663215382 : GET : /favicon.ico

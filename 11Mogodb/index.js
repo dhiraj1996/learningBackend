@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const mongoose = require("mongoose")
 // const users = require('./MOCK_DATA.json');
-const { type } = require("os");
+// const { type } = require("os");
 
 const app = express();
 const PORT = 8000;
@@ -50,33 +50,31 @@ app.use((req, res, next) => {
 })
 
 //For data showing in frontend
-app.get("/users", (req, res) => {
+app.get("/users", async (req, res) => {
+    const allDbUser = await User.find({});  //find({}) use to add all users in db.
     const html = `
     <ul>
-        ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
+        ${allDbUser.map((user) => `<li>${user.firstName} - ${user.email}</li>`).join("")}
     </ul>
     `
     res.send(html);
 })
 
 //REST API
-app.get("/api/users", (req, res) => {
-    //Custom Headers
-    res.setHeader("X-MyName", "Dhiraj Ekka")
-    //Always add X to custom headers
-    return res.json(users);
+app.get("/api/users", async (req, res) => {
+    const allDbUser = await User.find({});
+    return res.json(allDbUser);
 })
 
-app.route("/api/users/:id").get((req, res) => {
-    const id = Number(req.params.id);
-    const userWithID = users.find((user) => user.id === id);
-    if (!userWithID) return res.status(404).json({status: "user not found"})
-    res.send(userWithID);
+app.route("/api/users/:id").get(async (req, res) => {
+    const user = await User.findById(req.params.id)
+    if (!user) return res.status(404).json({status: "user not found"})
+    res.send(user);
 }).patch((req, res) => {
     //Edit user with id
     return res.json({ status: "Pending" });
 }).delete((req, res) => {
-    //Delete user with id
+    //Delete user with id 
     return res.json({ status: "Pending" });
 })
 
