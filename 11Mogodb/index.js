@@ -70,17 +70,18 @@ app.route("/api/users/:id").get(async (req, res) => {
     const user = await User.findById(req.params.id)
     if (!user) return res.status(404).json({status: "user not found"})
     res.send(user);
-}).patch((req, res) => {
+}).patch(async (req, res) => {
     //Edit user with id
-    return res.json({ status: "Pending" });
-}).delete((req, res) => {
+    await User.findByIdAndUpdate((req.params.id),{lastName: "Changed"})
+    return res.json({ status: "Sucessfully Changed" });
+}).delete(async (req, res) => {
     //Delete user with id 
-    return res.json({ status: "Pending" });
+    await User.findByIdAndDelete((req.params.id))
+    return res.json({ status: "Deleted Successfully",  });
 })
 
 app.post("/api/users",async (req, res) => {
     const body = req.body;
-    //If any of this data will not find send status code of 400.
     if (!body || !body.first_name || !body.last_name || !body.email || !body.email || !body.gender || !body.job_title){
         return res.status(400).json({status : "All field are required"})
     }

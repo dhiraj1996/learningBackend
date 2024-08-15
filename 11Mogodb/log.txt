@@ -26,4 +26,10 @@
  1723662905161 : GET : /api/users/66bd0017a9c78c76e929bd73 
  1723662927916 : GET : /api/users/66bd0017a9c78c76e929bd73 
  1723663172877 : GET : /favicon.ico 
- 1723663215382 : GET : /favicon.ico
+ 1723663215382 : GET : /favicon.ico 
+ 1723713423631 : GET : /users 
+ 1723713424401 : GET : /favicon.ico 
+ 1723714309884 : GET : /api/users 
+ 1723714402038 : PATCH : /api/users/66bd0017a9c78c76e929bd73 
+ 1723715321391 : DELETE : /api/users/66bceab700613b7acf2639e5 
+ 1723715758822 : GET : /users
