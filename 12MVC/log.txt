@@ -36,4 +36,8 @@
  1723882143233 : GET : /users 
  1723882764113 : GET : /api/users 
  1723883149830 : GET : /api/users 
- 1723883486655 : POST : /api/users
+ 1723883486655 : POST : /api/users 
+ 1723909830299 : POST : /api/users 
+ 1723909870202 : GET : /api/users/66c0c6c6e50641d6169275af 
+ 1723910054989 : PATCH : /api/users/66c0c6c6e50641d6169275af 
+ 1723910229774 : DELETE : /api/users/66c0c6c6e50641d6169275af
