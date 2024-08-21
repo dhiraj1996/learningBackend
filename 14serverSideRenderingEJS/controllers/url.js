@@ -1,5 +1,5 @@
 const generateShortId = require('ssid');
-const URL = require("../models/url")
+const URL = require("../models/url");
 
 async function handleGenerateShortUrl(req, res) {
     const body = req.body;
@@ -12,7 +12,10 @@ async function handleGenerateShortUrl(req, res) {
         redirectURL: body.url,
         visitHistory: [],
     })
-    return res.send({ id: getShortId });
+    return res.render("home", {
+        id: getShortId,
+    })
+    // return res.send({ id: getShortId });
 }
 
 async function handleRedirectUrl(req, res) {

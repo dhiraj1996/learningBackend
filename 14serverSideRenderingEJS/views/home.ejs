@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <center><h1>Link Shortener </h1> 
+        <form method="POST" action="/url" >
+            <label for="input">Enter Your Link</label>
+            <input type="text" name="url" placeholder="www.example.com">
+            <button type= "submit">Generate</button>
+        </form>
+
+        <% if (locals.id) { %>
+            <a href="localhost:8001/url/<%= id %>">localhost:8001/url/<%= id %></a>
+            <p>Url generated: localhost:8001/url/<%= id %></p>
+        <% } %>
+    </center>
+    
+    <center>
+        <% if (locals.id || locals.urls) { %>
+            <table>
+                <thead>
+                    <th>SL. No</th>
+                    <th>Total Clicks</th>
+                    <th>Short- ID</th>
+                    <th>Website</th>
+                </thead>
+                <tbody>
+                    <% urls.forEach((url, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %> </td>
+                            <td><%= url.visitHistory.length %></td>
+                            <td>localhost:8001/url/<%= url.shortId %> </td>
+                            <td><%= url.redirectURL %></td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </center>
+    
+</body>
+</html>
